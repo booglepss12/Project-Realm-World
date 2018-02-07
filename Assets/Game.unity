@@ -349,6 +349,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 1.29
       objectReference: {fileID: 0}
+    - target: {fileID: 1759140584119502, guid: 42c59d01013c3ee40a507d3e2e3a02a9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42c59d01013c3ee40a507d3e2e3a02a9, type: 2}
   m_IsPrefabParent: 0
@@ -1001,3 +1005,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff013aae12023346bf0452a70317753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWaypoint: {fileID: 96488485}
+  endWaypoint: {fileID: 939039501}
