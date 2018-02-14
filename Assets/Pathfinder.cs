@@ -21,9 +21,9 @@ public class Pathfinder : MonoBehaviour
 
     Queue<Waypoint> queue = new Queue<Waypoint>();
 
-    [SerializeField] bool isRunning = true; // todo make private
+     bool isRunning = true; // todo make private
 
-
+    Waypoint searchCenter; 
 
     Vector2Int[] directions = {
 
@@ -69,13 +69,11 @@ public class Pathfinder : MonoBehaviour
 
         {
 
-            var searchCenter = queue.Dequeue();
+            searchCenter = queue.Dequeue();
 
-            print("Searching from: " + searchCenter); // todo remove log
+            HaltIfEndFound();
 
-            HaltIfEndFound(searchCenter);
-
-            ExploreNeighbours(searchCenter);
+            ExploreNeighbours();
 
             searchCenter.isExplored = true;
 
@@ -91,7 +89,7 @@ public class Pathfinder : MonoBehaviour
 
 
 
-    private void HaltIfEndFound(Waypoint searchCenter)
+    private void HaltIfEndFound()
 
     {
 
@@ -99,7 +97,7 @@ public class Pathfinder : MonoBehaviour
 
         {
 
-            print("Searching from end node, therefore stopping"); // todo remove log
+
 
             isRunning = false;
 
@@ -109,7 +107,7 @@ public class Pathfinder : MonoBehaviour
 
 
 
-    private void ExploreNeighbours(Waypoint from)
+    private void ExploreNeighbours()
 
     {
 
@@ -121,7 +119,7 @@ public class Pathfinder : MonoBehaviour
 
         {
 
-            Vector2Int neighbourCoordinates = from.GetGridPos() + direction;
+            Vector2Int neighbourCoordinates = searchCenter.GetGridPos() + direction;
 
             try
 
@@ -151,7 +149,7 @@ public class Pathfinder : MonoBehaviour
 
         Waypoint neighbour = grid[neighbourCoordinates];
 
-        if (neighbour.isExplored)
+        if (neighbour.isExplored || queue.Contains(neighbour))
 
         {
 
@@ -163,11 +161,11 @@ public class Pathfinder : MonoBehaviour
 
         {
 
-            neighbour.SetTopColor(Color.blue); // todo move later
+           
 
             queue.Enqueue(neighbour);
-
-            print("Queueing " + neighbour);
+            neighbour.exploredFrom = searchCenter;
+           
 
         }
 
