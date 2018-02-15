@@ -24,6 +24,7 @@ public class Pathfinder : MonoBehaviour
      bool isRunning = true; // todo make private
 
     Waypoint searchCenter; 
+    List<Waypoint> path = new List<Waypoint>(); //TODO make private
 
     Vector2Int[] directions = {
 
@@ -37,27 +38,40 @@ public class Pathfinder : MonoBehaviour
 
     };
 
-
-
-    // Use this for initialization
-
-    void Start()
-
+    public List<Waypoint> GetPath()
     {
 
         LoadBlocks();
 
         ColorStartAndEnd();
 
-        Pathfind();
+        BreadthFirstSearch();
+        CreatePath();
+        return path;
+    }
+        
 
-        //ExploreNeighbours();
+    // Use this for initialization
 
+    
+
+    private void CreatePath()
+    {
+        path.Add(endWaypoint);
+        Waypoint previous = endWaypoint.exploredFrom;
+        while(previous != startWaypoint)
+        {
+            //add intermediate waypoints
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        //add start waypoint 
+        path.Add(startWaypoint);
+        //reverse the list
+        path.Reverse();
     }
 
-
-
-    private void Pathfind()
+    private void BreadthFirstSearch()
 
     {
 
@@ -81,9 +95,6 @@ public class Pathfinder : MonoBehaviour
 
 
 
-        // todo work-out path!
-
-        print("Finished pathfinding?");
 
     }
 
@@ -121,7 +132,7 @@ public class Pathfinder : MonoBehaviour
 
             Vector2Int neighbourCoordinates = searchCenter.GetGridPos() + direction;
 
-            try
+           if (grid.ContainsKey(neighbourCoordinates))
 
             {
 
@@ -129,13 +140,7 @@ public class Pathfinder : MonoBehaviour
 
             }
 
-            catch
-
-            {
-
-                // do nothing
-
-            }
+           
 
         }
 
@@ -176,7 +181,7 @@ public class Pathfinder : MonoBehaviour
     private void ColorStartAndEnd()
 
     {
-
+        //TODO consider moving out
         startWaypoint.SetTopColor(Color.green);
 
         endWaypoint.SetTopColor(Color.red);
