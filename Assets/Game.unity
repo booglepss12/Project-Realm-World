@@ -1881,6 +1881,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4955165257623986, guid: e9e757103d115324a91130751cbe62dc,
     type: 2}
   m_PrefabInternal: {fileID: 545860926}
+--- !u!65 &1105783416 stripped
+BoxCollider:
+  m_PrefabParentObject: {fileID: 65476147123625766, guid: 0dc657ece5d6f514297eb54082bc243b,
+    type: 2}
+  m_PrefabInternal: {fileID: 979322286}
 --- !u!1001 &1105811243
 Prefab:
   m_ObjectHideFlags: 0
@@ -3229,6 +3234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3c4a5210832ac47b11488399cea92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionMesh: {fileID: 1105783416}
+  hitPoints: 10
 --- !u!1001 &1994447684
 Prefab:
   m_ObjectHideFlags: 0
