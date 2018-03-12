@@ -2602,11 +2602,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114616879221127780, guid: 0ade2a5234de24a4d9bdc15fa68181b6,
-        type: 2}
-      propertyPath: targetEnemy
-      value: 
-      objectReference: {fileID: 1106801791}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ade2a5234de24a4d9bdc15fa68181b6, type: 2}
   m_IsPrefabParent: 0
@@ -3202,9 +3197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70404d9ca5ed599428d14bc4ef0cc553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondsBetweenSpawns: 4
   enemyPrefab: {fileID: 114941686308246830, guid: 04f81ff9814844ccfa08226f8d46a3f4,
     type: 2}
-  spawnEverySeconds: 10
 --- !u!1001 &1994447684
 Prefab:
   m_ObjectHideFlags: 0

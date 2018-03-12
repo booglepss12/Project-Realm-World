@@ -11,7 +11,10 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-    [SerializeField] float secondsBetweenSpawns = 2f;
+    [Range(0.1f, 120f)]
+
+    [SerializeField]
+    float secondsBetweenSpawns = 2f;
 
     [SerializeField] EnemyMovement enemyPrefab;
 
@@ -37,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
 
         {
 
-            print("Spawning");
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
 
             yield return new WaitForSeconds(secondsBetweenSpawns);
 
