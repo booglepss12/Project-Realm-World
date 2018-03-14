@@ -22,30 +22,35 @@ public class Pathfinder : MonoBehaviour {
 
     public List<Waypoint> GetPath()
     {
+        if (path.Count == 0)
+        {
+            CalculatePath();
+        }
+        return path;
+    }
+
+    private void CalculatePath()
+    {
         LoadBlocks();
-        
         BreadthFirstSearch();
         CreatePath();
-        return path;
     }
 
     private void CreatePath()
     {
         SetAsPath(endWaypoint);
-        
+
         Waypoint previous = endWaypoint.exploredFrom;
         while (previous != startWaypoint)
         {
-            
             previous = previous.exploredFrom;
             SetAsPath(previous);
-            
         }
 
-        path.Add(startWaypoint);
-        
+        SetAsPath(startWaypoint);
         path.Reverse();
     }
+
     private void SetAsPath(Waypoint waypoint)
     {
         path.Add(waypoint);
@@ -100,8 +105,6 @@ public class Pathfinder : MonoBehaviour {
             neighbour.exploredFrom = searchCenter;
         }
     }
-
-   
 
     private void LoadBlocks()
     {

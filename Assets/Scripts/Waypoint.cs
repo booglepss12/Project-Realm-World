@@ -8,16 +8,19 @@ public class Waypoint : MonoBehaviour
     public bool isExplored = false;
     public Waypoint exploredFrom;
     public bool isPlaceable = true;
+
+    [SerializeField] Tower towerPrefab;
+
     Vector2Int gridPos;
 
     const int gridSize = 10;
+    const string towerParentName = "Towers";
 
     public int GetGridSize()
     {
         return gridSize;
     }
-	
-   
+
     public Vector2Int GetGridPos()
     {
         return new Vector2Int(
@@ -26,13 +29,19 @@ public class Waypoint : MonoBehaviour
         );
     }
 
-     void OnMouseOver()
+    void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // left click
         {
-            print(gameObject.name + "clicked");
-        }
-        
+            if (isPlaceable)
+            {
+                Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                isPlaceable = false;
+            }
+            else
+            {
+                print("Can't place here");
+            }
+        }                
     }
-
 }
