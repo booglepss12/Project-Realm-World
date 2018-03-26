@@ -6,14 +6,28 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour {
 
     [SerializeField] Collider collisionMesh;
-    [SerializeField] int hitPoints = 10;
     [SerializeField] ParticleSystem hitParticlePrefab;
     [SerializeField] ParticleSystem deathParticlePrefab;
-   
+    [SerializeField] int hitPoints = 10;
+    [SerializeField] int hits = 1;
+    ScoreBoard scoreBoard;
+
     // Use this for initialization
-    void Start () {
-       
-	}
+
+    void Start()
+    {
+        AddBoxCollider();
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+
+    }
+
+    private void AddBoxCollider()
+    {
+        Collider boxCollider = gameObject.AddComponent<BoxCollider>();
+
+        boxCollider.isTrigger = false;
+    }
+
     private void OnParticleCollision(GameObject other)
     {
         ProcessHit();
@@ -25,8 +39,8 @@ public class EnemyDamage : MonoBehaviour {
     
     void ProcessHit()
     {
-        
-        hitPoints = hitPoints - 1;
+        scoreBoard.ScoreHit(hitPoints);
+        hits--;
         hitParticlePrefab.Play();
     }
 
