@@ -11,7 +11,7 @@ public class EnemyDamage : MonoBehaviour {
     [SerializeField] int hitPoints = 10;
     [SerializeField] int hits = 1;
     ScoreBoard scoreBoard;
-    PlayerHealth health;
+ 
 
     // Use this for initialization
 
