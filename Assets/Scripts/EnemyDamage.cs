@@ -11,6 +11,7 @@ public class EnemyDamage : MonoBehaviour {
     [SerializeField] int hitPoints = 10;
     [SerializeField] int hits = 1;
     ScoreBoard scoreBoard;
+    PlayerHealth health;
 
     // Use this for initialization
 
@@ -28,7 +29,7 @@ public class EnemyDamage : MonoBehaviour {
         boxCollider.isTrigger = false;
     }
 
-    private void OnParticleCollision(GameObject other)
+    public void OnParticleCollision(GameObject other)
     {
         ProcessHit();
         if (hitPoints <= 0)
@@ -39,6 +40,7 @@ public class EnemyDamage : MonoBehaviour {
     
     void ProcessHit()
     {
+        
         scoreBoard.ScoreHit(hitPoints);
         hits--;
         hitParticlePrefab.Play();
