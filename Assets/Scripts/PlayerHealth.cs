@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
 
 
     [SerializeField] int health = 20;
+   
 
     [SerializeField] int healthDecrease = 1;
      void Start()
@@ -41,8 +42,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void KillPlayer()
     {
+        
         Destroy(gameObject);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 }
