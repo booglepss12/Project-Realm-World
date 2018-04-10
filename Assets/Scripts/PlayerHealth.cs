@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 
 
@@ -14,8 +14,8 @@ public class PlayerHealth : MonoBehaviour
 
 
     [SerializeField] int health = 20;
-   
 
+    [SerializeField] Text healthText;
     [SerializeField] int healthDecrease = 1;
      void Start()
     {
@@ -27,8 +27,9 @@ public class PlayerHealth : MonoBehaviour
     private void OnTriggerEnter(Collider other)
 
     {
+        
         ProcessHit();
-        if(health < 0)
+        if (health < 0)
         {
             KillPlayer();
         }
@@ -36,9 +37,11 @@ public class PlayerHealth : MonoBehaviour
 
     private void ProcessHit()
     {
-        health = health - healthDecrease;
-        player.PlayerHealth(healthDecrease);
+        health -= healthDecrease;
+        healthText.text = health.ToString();
+       
     }
+
 
     private void KillPlayer()
     {
