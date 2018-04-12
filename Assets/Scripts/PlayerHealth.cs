@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] Text healthText;
     [SerializeField] int healthDecrease = 1;
+    [SerializeField] AudioClip enemyToBase;
      void Start()
     {
         player = FindObjectOfType<PlayerDamage>();
@@ -37,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void ProcessHit()
     {
+        GetComponent<AudioSource>().PlayOneShot(enemyToBase);
         health -= healthDecrease;
         healthText.text = health.ToString();
        

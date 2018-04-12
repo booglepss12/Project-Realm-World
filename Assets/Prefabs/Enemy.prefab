@@ -562,6 +562,8 @@ MonoBehaviour:
     type: 2}
   hitPoints: 3
   hits: 1
+  enemyDamageSFX: {fileID: 8300000, guid: cc35f47813d6d9c4386f1528b514c4d7, type: 3}
+  enemyDeathSFX: {fileID: 8300000, guid: 987358115987b684fb219f6bfb4ad81d, type: 3}
 --- !u!114 &114941686308246830
 MonoBehaviour:
   m_ObjectHideFlags: 1
