@@ -8,7 +8,7 @@ public class EnemyDamage : MonoBehaviour {
     [SerializeField] Collider collisionMesh;
     [SerializeField] ParticleSystem hitParticlePrefab;
     [SerializeField] ParticleSystem deathParticlePrefab;
-    [SerializeField] int hitPoints = 10;
+    [SerializeField] int hitPoints = 5;
     [SerializeField] int hits = 1;
     [SerializeField] AudioClip enemyDamageSFX;
     [SerializeField] AudioClip enemyDeathSFX;
@@ -35,6 +35,7 @@ public class EnemyDamage : MonoBehaviour {
     public void OnParticleCollision(GameObject other)
     {
         ProcessHit();
+        audioSource.PlayOneShot(enemyDamageSFX);
         if (hitPoints <= 0)
         {
             KillEnemy();
@@ -43,7 +44,7 @@ public class EnemyDamage : MonoBehaviour {
     
     void ProcessHit()
     {
-        audioSource.PlayOneShot(enemyDamageSFX);
+       
         scoreBoard.ScoreHit(hitPoints);
         hits--;
         hitParticlePrefab.Play();
