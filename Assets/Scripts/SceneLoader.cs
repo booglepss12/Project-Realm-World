@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
-
+    
     // Use this for initialization
     void Start()
     {
         Invoke("LoadNextScene", 4f);
     }
-
-    void LoadNextScene()
+   
+        void LoadNextScene()
     {
         SceneManager.LoadScene(1);
     }

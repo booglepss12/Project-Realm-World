@@ -2,17 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour {
     [SerializeField] float movementPeriod = 0.5f;
     [SerializeField] ParticleSystem goalParticle;
+   
 	// Use this for initialization
 	void Start () {
+       
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
         var path = pathfinder.GetPath();
         StartCoroutine(FollowPath(path));
+        
 	}
-
+    
     IEnumerator FollowPath(List<Waypoint> path)
     {
         print("Starting patrol..."); 
